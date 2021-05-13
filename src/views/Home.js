@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
 import Map from '../components/Map';
+import List from '../components/List';
 import Forms from '../components/Forms';
 import { Grid, Item } from 'semantic-ui-react'
 
+const victoriaCoords = [48.407326, -123.329773]
+
 const Home = () => {
-  const [mineInfo, setMineInfo] = useState([])
+  const [mineInfo, setMineInfo] = useState([]);
+  const [mapCenter, setMapCenter] = useState(victoriaCoords)
 
   return (
-    <Grid columns={2}>
+    <Grid columns={2} stackable>
       <Grid.Row columns={2}>
         <Item style={{paddingLeft: '1rem'}}>
           <Item.Content>
@@ -24,10 +28,11 @@ const Home = () => {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column>
-          <Map mineInfo={mineInfo}/>
+          <Map mineInfo={mineInfo} center={mapCenter}/>
         </Grid.Column>
         <Grid.Column>
           <Forms setMineInfo={setMineInfo}/>    
+          <List mineInfo={mineInfo} setMapCenter={setMapCenter}/>
         </Grid.Column>
       </Grid.Row>
     </Grid>

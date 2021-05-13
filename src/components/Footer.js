@@ -25,9 +25,9 @@ const Footer = ({ user }) => {
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as="h4" inverted>
-                Skynet AI
+                Mines Risk Analyser
               </Header>
-              <p>This website is produced by team Skynet as a hackathon example.</p>
+              <p>This website was produced as a hackathon example.</p>
             </Grid.Column>
           </Grid.Row>
         </Grid>

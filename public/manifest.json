@@ -1,6 +1,6 @@
 {
-  "short_name": "Skynet",
-  "name": "Skynet AI",
+  "short_name": "Mines Risk Analyser",
+  "name": "Mines Risk Analyser",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
