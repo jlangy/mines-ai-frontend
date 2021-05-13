@@ -7,5 +7,5 @@ export const getRiskIcon = risk => {
   return greenIcon;
 }
 
-export const swapCoords = (coords) =>
-  coords.map((coordPair) => [coordPair[1], coordPair[0]]);
+// export const swapCoords = (coords) =>
+//   coords.map((coordPair) => [coordPair[1], coordPair[0]]);
