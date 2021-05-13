@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import { getRiskIcon } from '../helpers';
-import {getAllMinesData} from '../services/ai-service';
 
 // Leaflet Icons setup
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -16,15 +15,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const victoriaCoords = [48.407326, -123.329773]
 
-export default function LeafletMap() {
-  const [markers, setMarkers] = useState([])
-  useEffect(() => {
-    getAllMinesData()
-      .then(result => {
-        console.log(result)
-        setMarkers(result);
-      })
-  }, [])
+export default function LeafletMap({mineInfo}) {
   return (
       <MapContainer center={victoriaCoords} zoom={12} scrollWheelZoom={false} style={{minHeight: '700px'}}>
         <TileLayer
@@ -32,8 +23,8 @@ export default function LeafletMap() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {markers.map(marker => {
-          const {lat, long, risk, name, id} = marker
+        {mineInfo.map(mineInfo => {
+          const {lat, long, risk, name, id} = mineInfo
           return (
             <Marker position={[lat, long]} icon={getRiskIcon(risk)} key={id}>
               <Popup>
