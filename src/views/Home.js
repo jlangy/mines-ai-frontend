@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Map from '../components/Map';
-import List from '../components/List';
+// import List from '../components/List';
+import Form from '../components/Forms';
 import {getAllMinesData} from '../services/ai-service';
 import { Grid } from 'semantic-ui-react'
 
@@ -19,8 +20,11 @@ const Home = () => {
         <Grid.Column>
           <Map mineInfo={mineInfo}/>
         </Grid.Column>
-        <Grid.Column>
+        {/* <Grid.Column>
           <List mineInfo={mineInfo} key={mineInfo}/>    
+        </Grid.Column> */}
+        <Grid.Column>
+          <Form />    
         </Grid.Column>
       </Grid.Row>
     </Grid>

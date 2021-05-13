@@ -1,0 +1,10 @@
+{
+  "title": "Permitter Mines Form",
+  "type": "object",
+  "description": "Enter a permitter name to see an analysis of all their mines",
+  "properties": {
+    "Permitter": {
+      "type": "string"
+    }
+  }
+}

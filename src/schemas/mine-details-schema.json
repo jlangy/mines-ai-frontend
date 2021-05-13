@@ -1,0 +1,13 @@
+{
+  "title": "A Mine Form",
+  "description": "Enter a specific mine's details to get a live risk analysis on the map",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "exaample": {
+      "type": "string"
+    }
+  }
+}
