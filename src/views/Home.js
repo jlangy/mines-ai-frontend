@@ -32,7 +32,7 @@ const Home = () => {
         </Grid.Column>
         <Grid.Column>
           <Forms setMineInfo={setMineInfo}/>    
-          <List mineInfo={mineInfo} setMapCenter={setMapCenter}/>
+          <List mineInfo={mineInfo} setMapCenter={setMapCenter} setMineInfo={setMineInfo}/>
         </Grid.Column>
       </Grid.Row>
     </Grid>

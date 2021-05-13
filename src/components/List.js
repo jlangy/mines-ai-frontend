@@ -1,8 +1,8 @@
 import React from "react";
-import { List, Header } from "semantic-ui-react";
+import { List, Header, Button } from "semantic-ui-react";
 import {getRiskColour} from '../helpers';
 
-const MineList = ({ mineInfo, setMapCenter }) => {
+const MineList = ({ mineInfo, setMineInfo, setMapCenter }) => {
   const minesSelected = mineInfo.length > 0;
   const handleClick = (lat, long) => {
     setMapCenter([lat, long])
@@ -25,6 +25,7 @@ const MineList = ({ mineInfo, setMapCenter }) => {
         );
       })}
     </List>
+    {minesSelected && <Button color='red' onClick={() => setMineInfo([])}>Clear List</Button>}
     </>
   );
 };
