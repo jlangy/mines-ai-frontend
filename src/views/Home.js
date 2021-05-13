@@ -1,30 +1,33 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Map from '../components/Map';
-// import List from '../components/List';
-import Form from '../components/Forms';
-import {getAllMinesData} from '../services/ai-service';
-import { Grid } from 'semantic-ui-react'
+import Forms from '../components/Forms';
+import { Grid, Item } from 'semantic-ui-react'
 
 const Home = () => {
   const [mineInfo, setMineInfo] = useState([])
-  useEffect(() => {
-    getAllMinesData()
-      .then(result => {
-        setMineInfo(result);
-      })
-  }, []);
 
   return (
     <Grid columns={2}>
+      <Grid.Row columns={2}>
+        <Item style={{paddingLeft: '1rem'}}>
+          <Item.Content>
+            <Item.Header as="h1">
+              Mine Risk Indicator
+            </Item.Header>
+            <Item.Description>
+              This application allows you to search for mines in B.C. to run a machine-learning algorithm predicting their risk levels.
+              To use the application, select a form below. You can either select all mines by permitter, or search for a single mine
+              by its details. On submission, the mine(s) and their risk level will be displayed on the map.
+            </Item.Description>
+          </Item.Content>
+        </Item>
+      </Grid.Row>
       <Grid.Row>
         <Grid.Column>
           <Map mineInfo={mineInfo}/>
         </Grid.Column>
-        {/* <Grid.Column>
-          <List mineInfo={mineInfo} key={mineInfo}/>    
-        </Grid.Column> */}
         <Grid.Column>
-          <Form />    
+          <Forms setMineInfo={setMineInfo}/>    
         </Grid.Column>
       </Grid.Row>
     </Grid>

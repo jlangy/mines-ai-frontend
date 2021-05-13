@@ -33,3 +33,21 @@ export async function getAllMinesData() {
     return mockData
   }
 }
+
+export async function getMineDataByDetails(details) {
+  try {
+    const result = await axios.post(BASE_API_URL + '/mines', {details});
+    return result.data;
+  } catch (error) {
+    return [mockData[0]]
+  }
+}
+
+export async function getMinesDataByPermitter(permitter) {
+  try {
+    const result = await axios.post(BASE_API_URL + '/mines', {permitter});
+    return result.data;
+  } catch (error) {
+    return mockData
+  }
+}
