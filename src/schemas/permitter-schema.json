@@ -5,6 +5,10 @@
   "properties": {
     "Permitter": {
       "type": "string"
+    },
+    "receiveNotifications": {
+      "type": "boolean",
+      "title": "Check here to be notified when any of these mine's risk indicator increases."
     }
   }
 }

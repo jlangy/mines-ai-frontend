@@ -6,8 +6,12 @@
     "name": {
       "type": "string"
     },
-    "exaample": {
+    "example": {
       "type": "string"
+    },
+    "receiveNotifications": {
+      "type": "boolean",
+      "title": "Check here to be notified when this mine's risk indicator increases."
     }
   }
 }
