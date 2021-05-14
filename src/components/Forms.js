@@ -39,6 +39,7 @@ const MineForm = ({ setMineInfo, setKey, formKey }, schema, onSubmit, validate, 
       validate={validate}
       key={formKey}
       uiSchema={uiSchema}
+      showErrorList={false}
     />
   </Tab.Pane>
 );

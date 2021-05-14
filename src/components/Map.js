@@ -37,7 +37,7 @@ export default function LeafletMap({ mineInfo, center }) {
       />
 
       {mineInfo.map((mineInfo) => {
-        const { lat, long, risk, name, id } = mineInfo;
+        const { lat, long, risk, mine_name: name, id } = mineInfo;
         return (
           <Marker position={[lat, long]} icon={getRiskIcon(risk)} key={id}>
             <Popup>
