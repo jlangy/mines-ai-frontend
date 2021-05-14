@@ -3,21 +3,24 @@ const BASE_API_URL = ''
 
 const mockData = [
   {
-    name: 'Super Safe Mine',
+    mine_name: 'test 1',
+    permittee_name: 'permittee 1',
     lat: 48.407326,
-    long: -123.329773,
+    long: -123.359773,
     risk: 0.1,
     id: 1
   },
   {
-    name: 'less Safe Mine',
-    lat: 48.410,
+    mine_name: 'test 2',
+    permittee_name: 'permittee 2',
+    lat: 48.450,
     long: -123.3,
     risk: 0.4,
     id: 2
   },
   {
-    name: 'The danger zone',
+    mine_name: 'test 3',
+    permittee_name: 'permittee 2',
     lat: 48.40732,
     long: -123.32,
     risk: 0.8,
@@ -39,15 +42,15 @@ export async function getMineDataByDetails(details) {
     const result = await axios.post(BASE_API_URL + '/mines', {details});
     return result.data;
   } catch (error) {
-    return [mockData[0]]
+    return [mockData.find(mine => mine.mine_name === details.mine_name)]
   }
 }
 
-export async function getMinesDataByPermitter(permitter) {
+export async function getMinesDataByPermitter(minesDetails, permitter) {
   try {
-    const result = await axios.post(BASE_API_URL + '/mines', {permitter});
+    const result = await axios.post(BASE_API_URL + '/mines', {minesDetails});
     return result.data;
   } catch (error) {
-    return mockData
+    return mockData.filter(mine => mine.permittee_name === permitter) || []
   }
 }
