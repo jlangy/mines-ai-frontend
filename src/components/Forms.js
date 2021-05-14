@@ -2,12 +2,11 @@ import Form from "@rjsf/semantic-ui";
 import {useState} from 'react';
 import mineDetailsSchema from "../schemas/mine-details-schema";
 import permitterSchema from "../schemas/permitter-schema";
-import mineDetailsUiSchema from "../schemas/mine-details-uischema.json";
-import permitterUiSchema from "../schemas/permitter-uischema.json";
+import mineDetailsUiSchema from "../schemas/mine-details-uischema";
+import permitterUiSchema from "../schemas/permitter-uischema";
 import { Tab } from "semantic-ui-react";
 import {
   getMineDataByDetails,
-  getMinesDataByPermitter,
 } from "../services/ai-service";
 import {mineNameValidate, permiteeValidate} from '../helpers';
 import { findMineByName, findMinesByPermittee } from "../database-mock/services";
@@ -17,8 +16,13 @@ const handlePermitterSubmission = async (data, setMineInfo, setKey) => {
     formData: { Permitter: permitter },
   } = data;
   const minesDetails = findMinesByPermittee(permitter);
-  const result = await getMinesDataByPermitter(minesDetails, permitter);
-  setMineInfo(result);
+  const result = await Promise.all(minesDetails.map(mine => getMineDataByDetails(mine)))
+  console.log('result is', result)
+  const minesWithRisk = minesDetails.map((mine,i) => {
+    mine.risk = result[i];
+    return mine;
+  })
+  setMineInfo(minesWithRisk);
   setKey(Date.now())
 };
 
@@ -27,7 +31,8 @@ const handleMineDetailsSubmission = async (data, setMineInfo, setKey) => {
   // UI validation running through rjsf, see helpers
   const mineDetails = findMineByName(mineName);
   const result = await getMineDataByDetails(mineDetails);
-  setMineInfo(result);
+  mineDetails.risk = result;
+  setMineInfo([mineDetails]);
   setKey(Date.now())
 };
 

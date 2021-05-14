@@ -4,11 +4,11 @@ import List from '../components/List';
 import Forms from '../components/Forms';
 import { Grid, Item } from 'semantic-ui-react'
 
-const victoriaCoords = [48.407326, -123.329773]
+const centralBCCoords = [56.407326, -125.329773]
 
 const Home = () => {
   const [mineInfo, setMineInfo] = useState([]);
-  const [mapCenter, setMapCenter] = useState(victoriaCoords)
+  const [mapCenter, setMapCenter] = useState(centralBCCoords)
 
   return (
     <Grid columns={2} stackable>

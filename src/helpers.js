@@ -1,15 +1,13 @@
-import { yellowIcon, redIcon, greenIcon } from "./components/Icons";
+import { redIcon, greenIcon } from "./components/Icons";
 import { findMineByName, findMinesByPermittee } from "./database-mock/services";
 
 export const getRiskIcon = (risk) => {
-  if (risk > 0.66) return redIcon;
-  if (risk > 0.33) return yellowIcon;
+  if (risk === "Yes") return redIcon;
   return greenIcon;
 };
 
 export const getRiskColour = (risk) => {
-  if (risk > 0.66) return "red";
-  if (risk > 0.33) return "yellow";
+  if (risk === "Yes") return "red";
   return "green";
 };
 

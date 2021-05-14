@@ -1,9 +1,10 @@
 import axios from "axios";
-const BASE_API_URL = ''
+// const BASE_API_URL = 'https://996fc38d8a73.ngrok.io';
+const BASE_API_URL = '';
 
 const mockData = [
   {
-    mine_name: 'test 1',
+    mine_name: 'mine 1',
     permittee_name: 'permittee 1',
     lat: 48.407326,
     long: -123.359773,
@@ -11,7 +12,7 @@ const mockData = [
     id: 1
   },
   {
-    mine_name: 'test 2',
+    mine_name: 'mine 2',
     permittee_name: 'permittee 2',
     lat: 48.450,
     long: -123.3,
@@ -19,7 +20,7 @@ const mockData = [
     id: 2
   },
   {
-    mine_name: 'test 3',
+    mine_name: 'mine 3',
     permittee_name: 'permittee 2',
     lat: 48.40732,
     long: -123.32,
@@ -30,7 +31,7 @@ const mockData = [
 
 export async function getAllMinesData() {
   try {
-    const result = await axios.get(BASE_API_URL + '/mines')
+    const result = await axios.get(BASE_API_URL + '/mine_incidents')
     return result.data;
   } catch (error) {
     return mockData
@@ -39,10 +40,12 @@ export async function getAllMinesData() {
 
 export async function getMineDataByDetails(details) {
   try {
-    const result = await axios.post(BASE_API_URL + '/mines', {details});
+    console.log('starting')
+    const result = await axios.get(BASE_API_URL + '/mine_incidents', {params: details});
+    console.log('api response is', result.data)
     return result.data;
   } catch (error) {
-    return [mockData.find(mine => mine.mine_name === details.mine_name)]
+    return "Yes";
   }
 }
 
@@ -51,6 +54,7 @@ export async function getMinesDataByPermitter(minesDetails, permitter) {
     const result = await axios.post(BASE_API_URL + '/mines', {minesDetails});
     return result.data;
   } catch (error) {
-    return mockData.filter(mine => mine.permittee_name === permitter) || []
+    const reqLength = minesDetails.length;
+    return new Array(reqLength).fill("Yes");
   }
 }

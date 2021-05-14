@@ -23,7 +23,7 @@ export default function LeafletMap({ mineInfo, center }) {
   return (
     <MapContainer
       center={center}
-      zoom={12}
+      zoom={5}
       scrollWheelZoom={false}
       style={{ minHeight: "700px" }}
     >
@@ -33,17 +33,15 @@ export default function LeafletMap({ mineInfo, center }) {
       />
       <ChangeView 
         center={center}
-        zoom={12}
+        zoom={5}
       />
 
       {mineInfo.map((mineInfo) => {
-        const { lat, long, risk, mine_name: name, id } = mineInfo;
+        const { latitude, longitude, risk, mine_name: name, id } = mineInfo;
         return (
-          <Marker position={[lat, long]} icon={getRiskIcon(risk)} key={id}>
+          <Marker position={[latitude, longitude]} icon={getRiskIcon(risk)} key={id}>
             <Popup>
               Name: {name}
-              <br />
-              Risk Level: {risk}.
             </Popup>
           </Marker>
         );
